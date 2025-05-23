@@ -1,9 +1,13 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 package admin;
 
 service AdminService {
   rpc CreateAdmin(CreateAdminRequest) returns (AdminResponse);
+  rpc UpdateAdmin(UpdateAdminRequest) returns (AdminResponse);
+  rpc DeleteAdmin(DeleteAdminRequest) returns (google.protobuf.Empty);
 
   rpc LoginAdmin(LoginAdminRequest) returns (TokenResponse);
   rpc VerifyAdmin(TokenRequest) returns (AdminResponse);
@@ -15,7 +19,17 @@ message Admin {
 
 message CreateAdminRequest {
   string email = 1;
+  string name = 3;
   string password = 2;
+}
+
+message UpdateAdminRequest {
+  string new_name = 1;
+  string new_password = 2;
+}
+
+message DeleteAdminRequest {
+  string email = 1;
 }
 
 message LoginAdminRequest {
