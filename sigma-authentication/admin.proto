@@ -30,8 +30,7 @@ message UpdateAdminRequest {
 }
 
 message DeleteAdminRequest {
-  string token = 3;
-  string email = 1;
+  string token = 1;
 }
 
 message LoginAdminRequest {
